@@ -1,6 +1,5 @@
 #include "Paddle.h"
 
-
 //constructor
 Paddle::Paddle(float topLeftX, float topLeftY) {
 
@@ -89,7 +88,20 @@ void Paddle::updatePos(float value) {
 		}
 	}
 
+	//calculate the new bounding box
+	calculateAABB(this->points, this->boundingMinPoint, this->boundingMaxPoint);
+
 	//after updating points delete the original display list and create new one
 	glDeleteLists(this->display, 1);
 	this->toDisplayList();
+}
+
+//return bounding min point
+Vec2f Paddle::getBoundMin() {
+	return this->boundingMinPoint;
+}
+
+//return bounding max point
+Vec2f Paddle::getBoundMax() {
+	return this->boundingMaxPoint;
 }

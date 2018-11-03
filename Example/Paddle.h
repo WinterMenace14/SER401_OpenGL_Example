@@ -1,3 +1,4 @@
+#pragma once
 #include "Globals.h"
 
 //create a class for the paddle of the pong game
@@ -9,6 +10,8 @@ public:
 	void toDisplayList();
 	GLuint getDisplayList();
 	void updatePos(float value);
+	Vec2f getBoundMin();
+	Vec2f getBoundMax();
 
 private:
 	float width = 5.0f;

@@ -1,5 +1,7 @@
-
+#pragma once
 //#include <iostream>
+#include <stdlib.h>
+#include <ctime>
 #include <vector>
 #include <GL/glut.h>
 #include "ImathVec.h"
