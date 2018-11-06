@@ -2,9 +2,9 @@
 
 //include the header files of the game objects
 #include "Ball.h"
-#include "Paddle.h"
 #include "Keyboard.h"
 #include <iostream>
+#include "Player.h"
 
 //define players movements
 #define P1_UP	'w'
@@ -33,8 +33,10 @@ public:
 //hold the objects of the game
 private:
 	Ball *ball;
-	Paddle *p1;
-	Paddle *p2;
+	Player* p1;
+	Player* p2;
+	//Paddle *p1;
+	//Paddle *p2;
 	Keyboard *keyboard;
 
 	//bool variables for running the game
