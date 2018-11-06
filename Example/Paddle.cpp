@@ -10,7 +10,7 @@ Paddle::Paddle(float topLeftX, float topLeftY) {
 	this->points.push_back(Vec2<GLfloat>(topLeftX + this->width, topLeftY));
 
 	//create and set display list
-	toDisplayList();
+	this->toDisplayList();
 	calculateAABB(this->points, this->boundingMinPoint, this->boundingMaxPoint);
 }
 
@@ -74,7 +74,7 @@ void Paddle::updatePos(float value) {
 	else if (value < 0.0f) {
 
 		//check 2nd point height
-		if (this->points[1].y <= -85.0f) {
+		if (this->points[1].y <= -90.0f) {
 
 			//return out of the function
 			return;

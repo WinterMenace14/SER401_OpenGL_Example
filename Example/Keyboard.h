@@ -1,11 +1,21 @@
+#pragma once
 #include <iostream>
 
 class Keyboard {
 
+//public methods for getting the keyboard input
 public:
-	bool up = false;
-	bool down = false;
+	
+	//generic constructor and destructor
+	Keyboard();
+	~Keyboard();
+
+	//main keyboard method
+	void readKeyboard(unsigned char key, int x, int y, bool press);
+
+	//return the keys array
+	unsigned char* getKeys();
 
 private:
-	bool keys[120];
+	unsigned char keys[256];
 };

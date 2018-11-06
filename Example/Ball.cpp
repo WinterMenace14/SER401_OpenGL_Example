@@ -69,16 +69,16 @@ void Ball::upSpeed() {
 	
 	//check to see if the value is positive or negative to add .01 or -.01
 	if (this->speed.x > 0) {
-		this->speed.x += 0.01f;
+		this->speed.x += 0.1f;
 	}
 	else
-		this->speed.x -= 0.01f;
+		this->speed.x -= 0.1f;
 
 	if (this->speed.y > 0) {
-		this->speed.y += 0.01f;
+		this->speed.y += 0.1f;
 	}
 	else
-		this->speed.y -= 0.01f;
+		this->speed.y -= 0.1f;
 }
 
 bool Ball::collide(Paddle *p) {
@@ -173,23 +173,23 @@ void Ball::setSpeed() {
 	switch (x) {
 
 	case 0:
-		this->speed.x = -0.05f;
-		this->speed.y = 0.05f;
+		this->speed.x = -0.5f;
+		this->speed.y = 0.5f;
 		break;
 
 	case 1:
-		this->speed.x = -0.05f;
-		this->speed.y = -0.05f;
+		this->speed.x = -0.5f;
+		this->speed.y = -0.5f;
 		break;
 
 	case 2:
-		this->speed.x = 0.05f;
-		this->speed.y = -0.05f;
+		this->speed.x = 0.5f;
+		this->speed.y = -0.5f;
 		break;
 
 	case 3:
-		this->speed.x = 0.05f;
-		this->speed.y = 0.05f;
+		this->speed.x = 0.5f;
+		this->speed.y = 0.5f;
 		break;
 	}
 }
