@@ -25,14 +25,8 @@ void Pong::render() {
 	//clear the screen
 	glClear(GL_COLOR_BUFFER_BIT); // clear the window
 
-	//render the scores of the players to the screen
-	glPushMatrix();
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glRasterPos2f(-95.0f, 70.0f);
-	string score = to_string(this->p1->getScore());
-	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, (int)score[0]);
-	glScalef(2.0f, 2.0f, 1.0f);
-	glPopMatrix();
+	//display scoreboard
+	scoreBoard();
 
 	//display each of the objects
 	glCallList(this->ball->getDisplayList());
@@ -40,6 +34,31 @@ void Pong::render() {
 	glCallList(this->p2->getPaddle()->getDisplayList());
 
 	glutSwapBuffers();
+}
+
+//method to display the score of both players
+void Pong::scoreBoard() {
+
+	//variable to store scores
+	string score;
+
+	//render the scores of the players to the screen
+	glPushMatrix();
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glRasterPos2f(-90.0f, 70.0f);
+	score = to_string(this->p1->getScore());
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, (int)score[0]);
+	glScalef(2.0f, 2.0f, 1.0f);
+	glPopMatrix();
+
+	//player 2 score
+	glPushMatrix();
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glRasterPos2f(85.0f, 70.0f);
+	score = to_string(this->p2->getScore());
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, (int)score[0]);
+	glScalef(2.0f, 2.0f, 1.0f);
+	glPopMatrix();
 }
 
 //handle the logic of the game
@@ -87,12 +106,16 @@ void Pong::logic() {
 
 		//check if the ball collides with player 1
 		if (ball->collide(p1->getPaddle()) && ball->getMinX() > p1->getPaddle()->getBoundMin().x) {
+			p1->getPaddle()->setLastHit(true);
+			p2->getPaddle()->setLastHit(false);
 			ball->changeDirection(Vec2<float>(-1.0f, 1.0f));
 			ball->upSpeed();
 		}
 
 		//check if the ball collides with player 2
 		if (ball->collide(p2->getPaddle()) && ball->getMaxX() < p2->getPaddle()->getBoundMax().x) {
+			p2->getPaddle()->setLastHit(true);
+			p1->getPaddle()->setLastHit(false);
 			ball->changeDirection(Vec2<float>(-1.0f, 1.0f));
 			ball->upSpeed();
 		}
@@ -129,4 +152,12 @@ void Pong::gameLoop() {
 	do {
 		t2 = glutGet(GLUT_ELAPSED_TIME);
 	} while (t2 - t1 < 1000 / FRAMERATE);
+
+	//check to see if one of the players reach 7
+	if (this->p1->getScore() == 7 || this->p2->getScore() == 7) {
+
+		//reset player scores to 0
+		this->p1->resetScore();
+		this->p2->resetScore();
+	}
 }

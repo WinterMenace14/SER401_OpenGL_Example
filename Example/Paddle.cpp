@@ -3,6 +3,9 @@
 //constructor
 Paddle::Paddle(float topLeftX, float topLeftY) {
 
+	//set bool to false
+	this->hitBallLast = false;
+
 	//add inital values to points
 	this->points.push_back(Vec2<GLfloat>(topLeftX, topLeftY));
 	this->points.push_back(Vec2<GLfloat>(topLeftX, topLeftY - this->height));
@@ -104,4 +107,8 @@ Vec2f Paddle::getBoundMin() {
 //return bounding max point
 Vec2f Paddle::getBoundMax() {
 	return this->boundingMaxPoint;
+}
+
+void Paddle::setLastHit(bool hit) {
+	this->hitBallLast = hit;
 }

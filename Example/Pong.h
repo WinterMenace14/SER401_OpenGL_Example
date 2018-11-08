@@ -28,6 +28,7 @@ public:
 	void gameLoop();	//game loop
 	void logic();		//read input and update objects
 	void render();		//display objects to the screen
+	void scoreBoard();	//within render method to display the score
 	Keyboard* getKeyboard();		//return the keyboard
 
 //hold the objects of the game
@@ -35,8 +36,6 @@ private:
 	Ball *ball;
 	Player* p1;
 	Player* p2;
-	//Paddle *p1;
-	//Paddle *p2;
 	Keyboard *keyboard;
 
 	//bool variables for running the game

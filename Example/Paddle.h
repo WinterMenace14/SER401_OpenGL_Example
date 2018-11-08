@@ -12,6 +12,7 @@ public:
 	void updatePos(float value);
 	Vec2f getBoundMin();
 	Vec2f getBoundMax();
+	void setLastHit(bool hit);
 
 private:
 	float width = 5.0f;
@@ -20,4 +21,5 @@ private:
 	Vec2f boundingMinPoint;
 	Vec2f boundingMaxPoint;
 	GLuint display;
+	bool hitBallLast;
 };
