@@ -11,7 +11,7 @@ public:
 	Vec2f getBoundingMin();
 	Vec2f getBoundingMax();
 	int getSecs();
-	int setSecs();
+	void setSecs(int lifeSpan);
 
 private:
 	float height = 5.0f;

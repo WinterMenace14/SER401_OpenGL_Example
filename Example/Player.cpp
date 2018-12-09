@@ -32,3 +32,19 @@ Paddle* Player::getPaddle() {
 void Player::resetScore() {
 	this->score = 0;
 }
+
+//return the player has a powerup
+bool Player::hasPowerUp() {
+	return this->hasPowerUp;
+}
+
+//set that the player has a powerup
+void Player::setPowerUp() {
+	if (this->hasPowerUp()) {
+		this->powerUp = false;
+	}
+
+	else {
+		this->powerUp = true;
+	}
+}

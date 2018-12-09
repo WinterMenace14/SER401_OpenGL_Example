@@ -134,7 +134,7 @@ Keyboard* Pong::getKeyboard() {
 void Pong::gameLoop() {
 
 	//create variables for getting time difference
-	//and setting frame rate
+	//and setting frame rate to 60 frames a second
 	int t1, t2;
 
 	t1 = glutGet(GLUT_ELAPSED_TIME);
@@ -152,6 +152,14 @@ void Pong::gameLoop() {
 	do {
 		t2 = glutGet(GLUT_ELAPSED_TIME);
 	} while (t2 - t1 < 1000 / FRAMERATE);
+
+	//a second of the game has passed
+	seconds++;
+
+	//check if seconds has reached 100 and reset
+	if (seconds >= 100) {
+		seconds = 0;
+	}
 
 	//check to see if one of the players reach 7
 	if (this->p1->getScore() == 7 || this->p2->getScore() == 7) {

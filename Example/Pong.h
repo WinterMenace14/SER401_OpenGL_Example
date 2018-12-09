@@ -5,6 +5,7 @@
 #include "Keyboard.h"
 #include <iostream>
 #include "Player.h"
+#include "PowerUp.h"
 
 //define players movements
 #define P1_UP	'w'
@@ -37,7 +38,11 @@ private:
 	Player* p1;
 	Player* p2;
 	Keyboard *keyboard;
+	vector<PowerUp> powerUps;
 
 	//bool variables for running the game
 	bool running = true;
+
+	//stroe the game time for setting lifespans of powerups
+	int seconds = 0;
 };

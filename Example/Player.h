@@ -10,8 +10,11 @@ public:
 	unsigned int getScore();
 	Paddle* getPaddle();
 	void resetScore();
+	bool hasPowerUp();
+	void setPowerUp();
 
 private:
 	Paddle* paddle;
 	unsigned int score;
+	bool powerUp = false;
 };

@@ -22,20 +22,24 @@ PowerUp::~PowerUp() {
 
 //display method
 void PowerUp::toDisplayList(string name) {
+	float r = 0.0f, g = 0.0f, b = 0.0f;
 
 	//iterate through the points and generate a display list
 	this->display = glGenLists(1);
 	glNewList(this->display, GL_COMPILE);
 
 	//depending upon the string name switch the color of the powerup
+	if (name == "BIG") {
+		r = 0.0f, g = 0.0f, b = 1.0f;
+	}
 
 	//color of white for the paddle
-	glColor3f(1.0f, 1.0f, 1.0f);
+	glColor3f(r, g, b);
 
 	//begin the points for drawing
 	glBegin(GL_QUADS);
 
-	//iterate through all the points of the Paddle
+	//iterate through all the points of the powerup
 	for (unsigned int i = 0; i < this->points.size(); i++) {
 		glVertex2f(this->points[i].x, this->points[i].y);
 	}
@@ -44,4 +48,29 @@ void PowerUp::toDisplayList(string name) {
 	glEnd();
 
 	glEndList();
+}
+
+//return display list for powerup
+GLuint PowerUp::getDisplayList() {
+	return this->display;
+}
+
+//get bounding min
+Vec2f PowerUp::getBoundingMin() {
+	return this->boundingMinPoint;
+}
+
+//get bounding max
+Vec2f PowerUp::getBoundingMax() {
+	return this->boundingMaxPoint;
+}
+
+//get the seconds of life for the power up for the player
+int PowerUp::getSecs() {
+	return this->seconds;
+}
+
+//set the seconds for the life span
+void PowerUp::setSecs(int lifeSpan) {
+	this->seconds = lifeSpan;
 }
