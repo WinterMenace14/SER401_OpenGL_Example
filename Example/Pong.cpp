@@ -10,7 +10,7 @@ Pong::~Pong() {
 
 //init function
 void Pong::init() {
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0); // color maroon
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0); // color black
 	glMatrixMode(GL_PROJECTION); // projection
 	glLoadIdentity();
 	gluOrtho2D(-100.0, 100.0, -100.0, 100.0); // units inside
